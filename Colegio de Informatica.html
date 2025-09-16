@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio de Informática y Tecnológia Virtual Panamá</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a75ff;
+            --secondary: #0039a6;
+            --accent: #ffcc00;
+            --light: #f5f9ff;
+            --dark: #0a1930;
+            --new1: #00c2a8; /* Verde azulado */
+            --new2: #ff6b6b; /* Coral */
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--new1));
+            color: var(--light);
+            min-height: 100vh;
+            padding: 20px;
+            background-attachment: fixed;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            background: var(--accent);
+            color: var(--dark);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .logo-text h1 {
+            font-size: 1.8rem;
+            line-height: 1.2;
+            text-decoration: none;
+        }
+        
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 30px;
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            margin-bottom: 50px;
+        }
+        
+        .hero h2 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .virtual-badge {
+            display: inline-block;
+            background: var(--new2);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            margin-top: 20px;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Featured Image Section */
+        .featured-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+        }
+        
+        .featured-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--accent);
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .featured-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .featured-content {
+            flex: 1;
+        }
+        
+        .featured-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .featured-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        /* Courses Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 70px;
+        }
+        
+        .course-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        .course-icon {
+            background: var(--accent);
+            color: var(--dark);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .course-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        
+        .course-content ul {
+            list-style: none;
+            margin: 15px 0;
+            flex-grow: 1;
+        }
+        
+        .course-content li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .course-content li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .course-duration {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px 20px;
+            margin: 60px 0;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stat-item {
+            text-align: center;
+            min-width: 180px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 60px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--accent);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 30px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Sección de Contacto con cuadros más pequeños */
+        .contact-section {
+            margin: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .contact-card {
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(0, 0, 0, 0.2);
+            border-color: var(--accent);
+        }
+        
+        .contact-icon {
+            background: var(--accent);
+            color: var(--dark);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5rem;
+        }
+        
+        .contact-card h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-card p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: var(--light);
+            color: var(--dark);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            nav ul {
+                gap: 10px;
+            }
+            
+            nav a {
+                font-size: 0.9rem;
+                padding: 6px 12px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero {
+                padding: 40px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .featured-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>Colegio de Informática y Tecnológia Virtual Panamá</h1>
+                    <p>Formando profesionales del mañana - 100% Virtual</p>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#cursos">Cursos</a></li>
+                    <li><a href="#profesores">Profesores</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <h2>Transforma tu futuro con nuestros cursos especializados</h2>
+            <p>Programas <strong>100% virtuales</strong> diseñados por expertos para formar profesionales en el área de tecnología e informática con las habilidades más demandadas del mercado laboral.</p>
+            <a href="#cursos" class="cta-button">Inscríbete ahora <i class="fas fa-arrow-right"></i></a>
+            <div class="virtual-badge">
+                <i class="fas fa-video"></i> Todas las clases son virtuales y grabadas
+            </div>
+        </section>
+        
+        <!-- Courses Section -->
+        <div id="cursos" class="section-title">
+            <h2>Nuestros Programas de Estudio</h2>
+            <p>Todos nuestros cursos son 100% virtuales con clases en vivo y grabadas</p>
+        </div>
+        
+        <div class="courses-grid">
+            <!-- Curso 1 -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Programación 1</h3>
+                    <p>Introducción a los fundamentos de la programación.</p>
+                    <ul>
+                        <li>Introducción a algoritmos</li>
+                        <li>Fundamentos de programación</li>
+                        <li>Lógica computacional</li>
+                        <li>Primeros pasos con Python</li>
+                    </ul>
+                    <div class="course-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Duración: 8 semanas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 2 -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-laptop-code"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Programación 2</h3>
+                    <p>Programación intermedia y estructuras de datos.</p>
+                    <ul>
+                        <li>Programación orientada a objetos</li>
+                        <li>Estructuras de datos básicas</li>
+                        <li>Manejo de archivos</li>
+                        <li>Introducción a bases de datos</li>
+                    </ul>
+                    <div class="course-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Duración: 10 semanas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 3 -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-file-excel"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Excel (Básico a Intermedio)</h3>
+                    <p>Domina Excel desde básico hasta intermedio.</p>
+                    <ul>
+                        <li>Funciones básicas e intermedias</li>
+                        <li>Tablas dinámicas y gráficos</li>
+                        <li>Fórmulas avanzadas</li>
+                        <li>Análisis de datos básico</li>
+                    </ul>
+                    <div class="course-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Duración: 6 semanas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 4 -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-file-word"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Informática (Word, PowerPoint)</h3>
+                    <p>Domina las herramientas esenciales de oficina.</p>
+                    <ul>
+                        <li>Word - Nivel Avanzado</li>
+                        <li>Presentaciones profesionales</li>
+                        <li>Formatos y estilos</li>
+                        <li>Documentos colaborativos</li>
+                    </ul>
+                    <div class="course-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Duración: 6 semanas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 5 -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Redes Informáticas</h3>
+                    <p>Conoce el funcionamiento y gestión de redes.</p>
+                    <ul>
+                        <li>Fundamentos de redes</li>
+                        <li>Protocolos de comunicación</li>
+                        <li>Configuración de routers</li>
+                        <li>Seguridad en redes</li>
+                    </ul>
+                    <div class="course-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Duración: 12 semanas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 6 -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Desarrollo Web</h3>
+                    <p>Aprende a crear sitios web modernos.</p>
+                    <ul>
+                        <li>HTML5 y CSS3</li>
+                        <li>JavaScript y jQuery</li>
+                        <li>Diseño responsivo</li>
+                        <li>Frameworks modernos</li>
+                    </ul>
+                    <div class="course-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Duración: 14 semanas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 7 -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Ciberseguridad</h3>
+                    <p>Protege sistemas y datos contra amenazas.</p>
+                    <ul>
+                        <li>Principios de seguridad informática</li>
+                        <li>Tipos de amenazas</li>
+                        <li>Herramientas de protección</li>
+                        <li>Normativas y compliance</li>
+                    </ul>
+                    <div class="course-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Duración: 10 semanas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 8 -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Computación Básica</h3>
+                    <p>Fundamentos esenciales para el uso de tecnología.</p>
+                    <ul>
+                        <li>Uso del sistema operativo</li>
+                        <li>Creación y gestión de correos</li>
+                        <li>Navegación segura en Internet</li>
+                        <li>Resolución de problemas básicos</li>
+                    </ul>
+                    <div class="course-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Duración: 6 semanas</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Curso 9 - Inteligencia Artificial -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="course-content">
+                    <h3>Inteligencia Artificial</h3>
+                    <p>Introducción a la IA para estudiantes y docentes.</p>
+                    <ul>
+                        <li>Fundamentos de IA</li>
+                        <li>Machine Learning básico</li>
+                        <li>Aplicaciones prácticas</li>
+                        <li>Herramientas de IA para educación</li>
+                    </ul>
+                    <div class="course-duration">
+                        <i class="far fa-clock"></i>
+                        <span>Duración: 8 semanas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Stats Section -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">200+</div>
+                <div class="stat-text">Estudiantes</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-text">Tasa de Satisfacción</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-text">Profesores Expertos</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">100%</div>
+                <div class="stat-text">Clases Virtuales</div>
+            </div>
+        </div>
+        
+        <!-- Teachers Section -->
+        <div id="profesores" class="section-title">
+            <h2>Nuestros Profesores</h2>
+            <p>Docentes preparados con experiencia en educación virtual</p>
+        </div>
+        
+        <div class="featured-section">
+            <div class="featured-content">
+                <h2>Equipo Docente de Excelencia</h2>
+                <p>Contamos con un equipo de profesionales con amplia experiencia en la industria tecnológica y en la docencia. Nuestros profesores combinan conocimientos teóricos sólidos con experiencia práctica en el campo laboral.</p>
+                <p><strong>Todas nuestras clases son 100% virtuales</strong> para que no te pierdas ningún contenido. Además, todas las sesiones son grabadas y disponibles para que puedas repasarlas cuando lo necesites.</p>
+                <p>Cada profesor está especializado en su área y se mantiene actualizado con las últimas tendencias tecnológicas para ofrecer una educación de vanguardia.</p>
+            </div>
+            <div class="featured-image">
+                <img src="https://images.unsplash.com/photo-1584697964358-3e14ca57658b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Profesor enseñando virtualmente">
+            </div>
+        </div>
+        
+        <!-- Contact Section with smaller boxes -->
+        <div id="contacto" class="section-title">
+            <h2>Contacto</h2>
+        </div>
+        
+        <div class="contact-section">
+            <div class="featured-content">
+                <h2>Estamos para ayudarte</h2>
+                <p>Nuestros Cursos todos mantienen Certificaciones</p>
+                <p>Si tienes alguna pregunta sobre nuestros programas, proceso de inscripción o necesitas información adicional, no dudes en contactarnos. Nuestro equipo está disponible para responder todas tus consultas.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Dirección</h3>
+                    <p>Tocumen, Ciudad Panamá</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Teléfono</h3>
+                    <p>+507 6770-8160</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p>AcademicPro@tutamail.com</p>
+                </div>
+                
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Horario</h3>
+                    <p>Lun-Vie: 8am - 8pm</p>
+                    <p>Sábados: 9am - 2pm</p>
+                </div>
+            </div>
+        </div>
+        
+        
+                <p>&copy; 2025 Colegio de Informática Virtual Panamá. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/50767708160" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Modal -->
+    <div class="modal" id="courseModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <p><strong>Duración:</strong> <span id="modalDuration"></span></p>
+            <a href="#contacto" class="cta-button">Más información</a>
+        </div>
+    </div>
+    
+    <script>
+        // Efecto de desplazamiento suave para los enlaces
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        
+            
+            // Config
